@@ -124,7 +124,7 @@ export function GallerySection() {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
               <div>
                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-2">
-                  Earthy Selections
+                  Gallery
                 </h2>
                 <p className="text-muted-foreground text-sm md:text-base">
                   Deep, grounding spices harvested from the fertile soils of Sri Lanka&apos;s central highlands
