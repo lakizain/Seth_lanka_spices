@@ -29,7 +29,7 @@ export function Header() {
             About Us
           </Link>
           <Link 
-            href="/#products" 
+            href="/products" 
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             Our Products

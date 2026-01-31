@@ -29,11 +29,11 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-3">
               {[
-                { label: 'Home', href: '#home' },
-                { label: 'About Us', href: '#about' },
-                { label: 'Our Products', href: '#products' },
-                { label: 'Our Gallery', href: '#gallery' },
-                { label: 'Contact Us', href: '#contact' }
+                { label: 'Home', href: '/#home' },
+                { label: 'About Us', href: '/#about' },
+                { label: 'Our Products', href: '/products' },
+                { label: 'Our Gallery', href: '/gallery' },
+                { label: 'Contact Us', href: '/#contact' }
               ].map((item) => (
                 <li key={item.label}>
                   <Link 
