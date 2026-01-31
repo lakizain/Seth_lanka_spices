@@ -174,7 +174,7 @@ export function GallerySection() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {products.map((product) => (
                 <div key={product.id} className="group bg-card rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-border/50">
-                  <div className="bg-muted rounded-xl overflow-hidden mb-4 aspect-square relative">
+                  <div className="bg-muted rounded-xl overflow-hidden aspect-square relative">
                     {/* Space for product image */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Image
@@ -186,36 +186,7 @@ export function GallerySection() {
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-lg font-serif font-bold text-foreground leading-tight">
-                        {product.name}
-                      </h3>
-                      <span className="text-lg font-bold text-primary shrink-0">
-                        ${product.price.toFixed(2)}
-                      </span>
-                    </div>
-                    
-                    <p className="text-xs italic text-muted-foreground">
-                      {product.latinName}
-                    </p>
-                    
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                      {product.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {product.tags.map((tag) => (
-                        <Badge 
-                          key={tag} 
-                          variant="secondary"
-                          className="bg-secondary/10 text-secondary-foreground hover:bg-secondary/20 text-[10px] font-bold tracking-wider"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
+
                 </div>
               ))}
             </div>
