@@ -82,16 +82,14 @@ export function GallerySection() {
   const totalPages = 3
 
   return (
-    <section id="gallery" className="relative min-h-screen py-20" style={{ 
-      background: 'linear-gradient(135deg, #E8956F 0%, #D4845C 50%, #E8956F 100%)'
-    }}>
+    <section id="gallery" className="relative min-h-screen py-20 bg-background">
       <div className="container px-6">
         <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12">
           {/* Sidebar */}
           <aside className="space-y-8">
             {/* Flavor Profile */}
             <div>
-              <h3 className="text-xs font-bold tracking-wider mb-4 text-secondary">
+              <h3 className="text-xs font-bold tracking-wider mb-4 text-foreground/80">
                 FLAVOR PROFILE
               </h3>
               <div className="space-y-2">
@@ -104,8 +102,8 @@ export function GallerySection() {
                       onClick={() => setSelectedFlavor(flavor.id)}
                       className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${
                         isSelected 
-                          ? 'bg-primary text-secondary font-semibold shadow-md' 
-                          : 'bg-transparent text-secondary/80 hover:bg-secondary/10'
+                          ? 'bg-primary text-primary-foreground font-semibold shadow-md' 
+                          : 'bg-card text-muted-foreground hover:bg-muted hover:text-foreground'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -121,13 +119,13 @@ export function GallerySection() {
 
             {/* Region */}
             <div>
-              <h3 className="text-xs font-bold tracking-wider mb-4 text-secondary">
+              <h3 className="text-xs font-bold tracking-wider mb-4 text-foreground/80">
                 REGION
               </h3>
               <div className="space-y-2">
                 {regions.map((region) => (
-                  <label key={region} className="flex items-center gap-3 text-sm text-secondary/80 hover:text-secondary cursor-pointer">
-                    <input type="checkbox" className="rounded border-secondary/30 text-primary focus:ring-primary" />
+                  <label key={region} className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground cursor-pointer">
+                    <input type="checkbox" className="rounded border-input text-primary focus:ring-primary" />
                     <span>{region}</span>
                   </label>
                 ))}
@@ -135,14 +133,14 @@ export function GallerySection() {
             </div>
 
             {/* Curated Sets */}
-            <div className="bg-secondary text-white p-6 rounded-xl">
-              <h3 className="text-xl font-bold mb-2">Curated Sets</h3>
-              <p className="text-sm text-white/80 mb-4 leading-relaxed">
+            <div className="bg-muted p-6 rounded-xl">
+              <h3 className="text-xl font-serif font-bold mb-2 text-foreground">Curated Sets</h3>
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                 Discover our botanical pairings designed by Sri Lankan chefs.
               </p>
               <Button 
                 variant="outline" 
-                className="border-primary text-primary hover:bg-primary hover:text-secondary font-semibold text-xs tracking-wider bg-transparent"
+                className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-xs tracking-wider bg-transparent"
               >
                 EXPLORE HERITAGE
               </Button>
@@ -154,16 +152,16 @@ export function GallerySection() {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-2">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-2">
                   Earthy Selections
                 </h2>
-                <p className="text-secondary/70 text-sm md:text-base">
+                <p className="text-muted-foreground text-sm md:text-base">
                   Deep, grounding spices harvested from the fertile soils of Sri Lanka&apos;s central highlands
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold tracking-wider text-secondary">SORT BY:</span>
-                <select className="bg-transparent border-none text-sm font-semibold text-secondary focus:outline-none cursor-pointer">
+                <span className="text-xs font-bold tracking-wider text-muted-foreground">SORT BY:</span>
+                <select className="bg-transparent border-none text-sm font-semibold text-foreground focus:outline-none cursor-pointer">
                   <option>POPULARITY</option>
                   <option>PRICE: LOW TO HIGH</option>
                   <option>PRICE: HIGH TO LOW</option>
@@ -175,8 +173,8 @@ export function GallerySection() {
             {/* Product Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {products.map((product) => (
-                <div key={product.id} className="group">
-                  <div className="bg-secondary rounded-2xl overflow-hidden mb-4 aspect-square relative">
+                <div key={product.id} className="group bg-card rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-border/50">
+                  <div className="bg-muted rounded-xl overflow-hidden mb-4 aspect-square relative">
                     {/* Space for product image */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Image
@@ -190,19 +188,19 @@ export function GallerySection() {
                   
                   <div className="space-y-2">
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-lg font-bold text-secondary leading-tight">
+                      <h3 className="text-lg font-serif font-bold text-foreground leading-tight">
                         {product.name}
                       </h3>
-                      <span className="text-lg font-bold text-secondary shrink-0">
+                      <span className="text-lg font-bold text-primary shrink-0">
                         ${product.price.toFixed(2)}
                       </span>
                     </div>
                     
-                    <p className="text-xs italic text-secondary/60">
+                    <p className="text-xs italic text-muted-foreground">
                       {product.latinName}
                     </p>
                     
-                    <p className="text-sm text-secondary/80 leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                       {product.description}
                     </p>
                     
@@ -211,7 +209,7 @@ export function GallerySection() {
                         <Badge 
                           key={tag} 
                           variant="secondary"
-                          className="bg-secondary/20 text-secondary text-[10px] font-bold tracking-wider hover:bg-secondary/30"
+                          className="bg-secondary/10 text-secondary-foreground hover:bg-secondary/20 text-[10px] font-bold tracking-wider"
                         >
                           {tag}
                         </Badge>
@@ -227,7 +225,7 @@ export function GallerySection() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-10 w-10 rounded-full bg-transparent text-secondary hover:bg-secondary/10"
+                className="h-10 w-10 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted"
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
               >
@@ -241,8 +239,8 @@ export function GallerySection() {
                   size="icon"
                   className={`h-10 w-10 rounded-full font-bold ${
                     currentPage === i + 1 
-                      ? 'bg-primary text-secondary hover:bg-primary/90' 
-                      : 'bg-transparent text-secondary hover:bg-secondary/10'
+                      ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
+                      : 'bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
                   onClick={() => setCurrentPage(i + 1)}
                 >
@@ -253,7 +251,7 @@ export function GallerySection() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-10 w-10 rounded-full bg-transparent text-secondary hover:bg-secondary/10"
+                className="h-10 w-10 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted"
                 onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
               >
