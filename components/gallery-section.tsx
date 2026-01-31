@@ -13,11 +13,7 @@ const flavorProfiles = [
   { id: 'sweet', label: 'Sweet', icon: Candy, count: 9 },
 ]
 
-const regions = [
-  'Kandy Highlands',
-  'Matale Valley',
-  'Southern Coast',
-]
+
 
 const products = [
   {
@@ -117,34 +113,9 @@ export function GallerySection() {
               </div>
             </div>
 
-            {/* Region */}
-            <div>
-              <h3 className="text-xs font-bold tracking-wider mb-4 text-foreground/80">
-                REGION
-              </h3>
-              <div className="space-y-2">
-                {regions.map((region) => (
-                  <label key={region} className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground cursor-pointer">
-                    <input type="checkbox" className="rounded border-input text-primary focus:ring-primary" />
-                    <span>{region}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
 
-            {/* Curated Sets */}
-            <div className="bg-muted p-6 rounded-xl">
-              <h3 className="text-xl font-serif font-bold mb-2 text-foreground">Curated Sets</h3>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                Discover our botanical pairings designed by Sri Lankan chefs.
-              </p>
-              <Button 
-                variant="outline" 
-                className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-xs tracking-wider bg-transparent"
-              >
-                EXPLORE HERITAGE
-              </Button>
-            </div>
+
+
           </aside>
 
           {/* Main Content */}
@@ -159,19 +130,11 @@ export function GallerySection() {
                   Deep, grounding spices harvested from the fertile soils of Sri Lanka&apos;s central highlands
                 </p>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold tracking-wider text-muted-foreground">SORT BY:</span>
-                <select className="bg-transparent border-none text-sm font-semibold text-foreground focus:outline-none cursor-pointer">
-                  <option>POPULARITY</option>
-                  <option>PRICE: LOW TO HIGH</option>
-                  <option>PRICE: HIGH TO LOW</option>
-                  <option>NAME</option>
-                </select>
-              </div>
+
             </div>
 
             {/* Product Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
               {products.map((product) => (
                 <div key={product.id} className="group bg-card rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-border/50">
                   <div className="bg-muted rounded-xl overflow-hidden aspect-square relative">
