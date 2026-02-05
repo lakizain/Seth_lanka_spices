@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ChevronLeft, ChevronRight, Flame, Leaf, Droplet, Candy } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -13,35 +13,69 @@ const flavorProfiles = [
   { id: 'sweet', label: 'Sweet', icon: Candy, count: 9 },
 ]
 
-type GalleryItem = {
-  id: number
-  name: string
-  latinName?: string
-  price?: number
-  description?: string
-  tags?: string[]
-  image: string
-}
+
+
+const products = [
+  {
+    id: 1,
+    name: 'True Turmeric Powder',
+    latinName: 'Curcuma longa',
+    price: 12.00,
+    description: 'Finely ground, sun-dried roots from the Matale region.',
+    tags: ['HIGH CURCUMIN', '100G JAR'],
+    image: '/turmeric.jpg',
+  },
+  {
+    id: 2,
+    name: 'Ceylon Cinnamon Quills',
+    latinName: 'Cinnamomum verum',
+    price: 15.00,
+    description: 'Delicate, hand-rolled layers of inner bark with a sweet aroma.',
+    tags: ['HERITAGE GRADE', '50G TUBE'],
+    image: '/cinnamon-sticks.jpg',
+  },
+  {
+    id: 3,
+    name: 'Crushed Red Chili',
+    latinName: 'Capsicum annuum',
+    price: 9.00,
+    description: 'Slow-roasted peppers packed with fiery flavor.',
+    tags: ['ARTISANAL ROAST', '80G POUCH'],
+    image: '/chili-powder.jpg',
+  },
+  {
+    id: 4,
+    name: 'Organic Black Pepper',
+    latinName: 'Piper nigrum',
+    price: 11.00,
+    description: 'High-piperine content harvested from highland estate farms.',
+    tags: ['ESTATE GROWN', '120G GRINDER'],
+    image: '/cardamom.jpg',
+  },
+  {
+    id: 5,
+    name: 'Green Cardamom Pods',
+    latinName: 'Elettaria cardamomum',
+    price: 18.50,
+    description: 'Hand-picked green capsules with a floral, citrusy profile.',
+    tags: ['PREMIUM GRADE', '40G GLASS'],
+    image: '/cardamom.jpg',
+  },
+  {
+    id: 6,
+    name: 'Cloves from Kandy',
+    latinName: 'Syzygium aromaticum',
+    price: 14.00,
+    description: 'Pungent flower buds sun-dried in the misty hills of Kandy.',
+    tags: ['SINGLE SOURCE', '60G JAR'],
+    image: '/chili-powder.jpg',
+  },
+]
 
 export function GallerySection() {
   const [selectedFlavor, setSelectedFlavor] = useState('earthy')
   const [currentPage, setCurrentPage] = useState(1)
   const totalPages = 3
-  const [items, setItems] = useState<GalleryItem[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const res = await fetch('/api/gallery', { cache: 'no-store' })
-        const data = await res.json()
-        setItems(data)
-      } finally {
-        setLoading(false)
-      }
-    }
-    load()
-  }, [])
 
   return (
     <section id="gallery" className="relative min-h-screen py-20 bg-background">
@@ -101,10 +135,7 @@ export function GallerySection() {
 
             {/* Product Grid */}
             <div className="grid md:grid-cols-2 gap-6 mb-12">
-              {loading && (
-                <div className="col-span-full text-center text-muted-foreground">Loading...</div>
-              )}
-              {!loading && items.map((product) => (
+              {products.map((product) => (
                 <div key={product.id} className="group bg-card rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-border/50">
                   <div className="bg-muted rounded-xl overflow-hidden aspect-square relative">
                     {/* Space for product image */}
@@ -118,7 +149,7 @@ export function GallerySection() {
                     </div>
                   </div>
                   
- 
+
                 </div>
               ))}
             </div>

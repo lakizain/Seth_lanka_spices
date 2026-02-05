@@ -2,26 +2,10 @@
 
 import { Button } from '@/components/ui/button'
 import { ChevronDown } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [heroSettings, setHeroSettings] = useState({
-    heroTitle: 'Seth Lanka Spices',
-    heroSubtitle: 'The Soul of Sri Lanka',
-    heroImage: ''
-  })
-
-  useEffect(() => {
-    fetch('/api/settings')
-      .then(res => res.json())
-      .then(data => {
-        if (data?.home) {
-          setHeroSettings(prev => ({ ...prev, ...data.home }))
-        }
-      })
-      .catch(err => console.error('Failed to load settings', err))
-  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -86,27 +70,17 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#140e08' }}>
-      {heroSettings.heroImage && (
-        <div 
-          className="absolute inset-0 z-0 opacity-40"
-          style={{
-            backgroundImage: `url(${heroSettings.heroImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-      )}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-60 z-0"
+        className="absolute inset-0 w-full h-full opacity-60"
       />
       
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto animate-fade-up">
         <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl text-white mb-4 tracking-tight text-balance">
-          {heroSettings.heroTitle}
+          Seth Lanka Spices
         </h1>
         <p className="text-sm md:text-base tracking-[0.3em] text-white/90 mb-12 uppercase">
-          {heroSettings.heroSubtitle}
+          The Soul of Sri Lanka
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
