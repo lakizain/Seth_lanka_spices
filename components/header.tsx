@@ -38,7 +38,7 @@ export function Header() {
             Our Gallery
           </Link>
           <Link 
-            href="/#contact" 
+            href="/contact" 
             className="text-sm font-bold transition-all duration-300 hover:text-primary hover:scale-105 inline-block"
           >
             Contact

@@ -33,7 +33,7 @@ export function Footer() {
                 { label: 'About Us', href: '/#about' },
                 { label: 'Our Products', href: '/products' },
                 { label: 'Our Gallery', href: '/gallery' },
-                { label: 'Contact Us', href: '/#contact' }
+                { label: 'Contact Us', href: '/contact' }
               ].map((item) => (
                 <li key={item.label}>
                   <Link 
@@ -55,7 +55,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 shrink-0 mt-0.5" />
                 <span className="text-sm leading-relaxed">
-                  Location: SETH LANKA PVT(LTD) , North marale ,Matale , sri lanka
+                  Location: SETH LANKA PVT(LTD) , NORTH MARALE ,MATALE , SRI LANKA
                 </span>
               </li>
               <li className="flex items-center gap-3">
