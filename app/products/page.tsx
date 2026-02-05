@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Header } from '@/components/header'
@@ -27,63 +27,15 @@ import {
 } from '@/components/ui/pagination'
 import { Check, ArrowRight } from 'lucide-react'
 
-// Mock Data
-const products = [
-  {
-    id: 1,
-    name: 'Ceylon Cinnamon',
-    flavor: 'Sweet & Woody',
-    price: 18.00,
-    image: '/cinnamon-sticks.jpg',
-    badge: 'Best Seller',
-    category: 'Sweet',
-  },
-  {
-    id: 2,
-    name: 'Organic Turmeric',
-    flavor: 'Earthy & Vibrant',
-    price: 14.50,
-    image: '/turmeric.jpg',
-    badge: null,
-    category: 'Earthy',
-  },
-  {
-    id: 3,
-    name: 'Green Cardamom',
-    flavor: 'Aromatic & Sweet',
-    price: 22.00,
-    image: '/cardamom.jpg',
-    badge: null,
-    category: 'Sweet',
-  },
-  {
-    id: 4,
-    name: 'Red Chili Powder',
-    flavor: 'Piquant & Smoky',
-    price: 12.00,
-    image: '/chili-powder.jpg',
-    badge: null,
-    category: 'Piquant',
-  },
-  {
-    id: 5,
-    name: 'Black Pepper',
-    flavor: 'Bold & Piquant',
-    price: 16.50,
-    image: '/placeholder.jpg', // Using placeholder
-    badge: null,
-    category: 'Piquant',
-  },
-  {
-    id: 6,
-    name: 'Premium Cloves',
-    flavor: 'Warm & Intense',
-    price: 19.00,
-    image: '/placeholder.jpg', // Using placeholder
-    badge: null,
-    category: 'Zesty',
-  },
-]
+type Product = {
+  id: number
+  name: string
+  flavor: string
+  price: number
+  image: string
+  badge?: string | null
+  category?: string | null
+}
 
 const flavorProfiles = [
   { name: 'Zesty', count: 12 },
@@ -95,6 +47,21 @@ const flavorProfiles = [
 export default function ProductsPage() {
   const [priceRange, setPriceRange] = useState([5, 50])
   const [selectedFlavor, setSelectedFlavor] = useState<string | null>('Earthy')
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/products', { cache: 'no-store' })
+        const data = await res.json()
+        setProducts(data)
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [])
 
   return (
     <div className="min-h-screen flex flex-col bg-[#faf2eb]">
@@ -202,7 +169,10 @@ export default function ProductsPage() {
 
             {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-              {products.map((product) => (
+              {loading && (
+                <div className="col-span-full text-center text-muted-foreground">Loading...</div>
+              )}
+              {!loading && products.map((product) => (
                 <Card key={product.id} className="overflow-hidden border-none shadow-sm hover:shadow-md transition-shadow duration-300 group bg-white">
                   <div className="relative aspect-square bg-[#f5f5f5]">
                     {product.badge && (

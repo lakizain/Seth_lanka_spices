@@ -3,8 +3,22 @@
 import { Button } from '@/components/ui/button'
 import { ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 export function FeaturedProduct() {
+  const [image, setImage] = useState('/cinnamon-sticks.jpg')
+
+  useEffect(() => {
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data?.home?.featuredProductImage) {
+          setImage(data.home.featuredProductImage)
+        }
+      })
+      .catch(err => console.error('Failed to load settings', err))
+  }, [])
+
   return (
     <section className="py-20 px-6 bg-muted/30">
       <div className="container max-w-7xl mx-auto">
@@ -13,11 +27,12 @@ export function FeaturedProduct() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl transform rotate-3 transition-transform group-hover:rotate-6" />
             <div className="relative bg-card rounded-3xl p-8 md:p-12 shadow-2xl transform -rotate-3 transition-transform group-hover:-rotate-6">
               <Image
-                src="/cinnamon-sticks.jpg"
+                src={image}
                 alt="Ceylon Cinnamon Sticks"
                 width={500}
                 height={500}
                 className="w-full h-auto rounded-xl"
+                onError={() => setImage('/cinnamon-sticks.jpg')}
               />
             </div>
           </div>
