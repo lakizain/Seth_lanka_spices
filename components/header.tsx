@@ -15,31 +15,31 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-8">
           <Link 
             href="/#home" 
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-bold transition-all duration-300 hover:text-primary hover:scale-105 inline-block"
           >
             Home
           </Link>
           <Link 
             href="/#about" 
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-bold transition-all duration-300 hover:text-primary hover:scale-105 inline-block"
           >
             About Us
           </Link>
           <Link 
             href="/products" 
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-bold transition-all duration-300 hover:text-primary hover:scale-105 inline-block"
           >
             Our Products
           </Link>
           <Link 
             href="/gallery" 
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-bold transition-all duration-300 hover:text-primary hover:scale-105 inline-block"
           >
             Our Gallery
           </Link>
           <Link 
             href="/#contact" 
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="text-sm font-bold transition-all duration-300 hover:text-primary hover:scale-105 inline-block"
           >
             Contact
           </Link>
